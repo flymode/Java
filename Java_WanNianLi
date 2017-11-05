@@ -1,0 +1,91 @@
+
+import java.util.Scanner;
+
+public class XunHuan_WanNianLi {
+	// 万年历
+	public static void main(String[] args) {
+		// 根据用户输入年份和日期输出日历
+		Scanner sc = new Scanner(System.in);
+		// 让用户输入 年份和月份
+		System.out.println("输入年份和月份");
+		int userYears = sc.nextInt();
+		int userMonths = sc.nextInt();
+		// 月份天数
+		int monthDays = 0;
+		// 总天数
+		int days = 0;
+		// 计算1970到输入年份的所有天数和
+		// 先判断是否是闰年
+		for (int i = 1970; i < userYears; i++) {
+			if ((i % 100 != 0 && i % 4 == 0) || (i / 400 == 0)) {
+				days += 366;
+
+			} else {
+				days += 365;
+			}
+		}
+		System.out.println("年份天数一共：" + days);
+
+		// 判断月份
+		switch (userMonths) {
+		case 1:
+			monthDays = 0;
+			break;
+		case 2:
+			monthDays = 31;
+			break;
+		case 3:
+			monthDays = 59;
+			break;
+		case 4:
+			monthDays = 90;
+			break;
+		case 5:
+			monthDays = 120;
+			break;
+		case 6:
+			monthDays = 151;
+			break;
+		case 7:
+			monthDays = 181;
+			break;
+		case 8:
+			monthDays = 212;
+			break;
+		case 9:
+			monthDays = 243;
+			break;
+		case 10:
+			monthDays = 273;
+			break;
+		case 11:
+			monthDays = 304;
+			break;
+		case 12:
+			monthDays = 334;
+			break;
+		}
+		 if ((userYears % 100 != 0 && userYears % 4 == 0)
+		 || (userYears / 400 == 0)) {
+		 monthDays += 1;
+		 } else {
+		 monthDays += 0;
+		 }
+		System.out.println("月份天数到该月有：" + monthDays);
+
+		// 计算星期几 年+月的天数除以7
+		 int week = (days+monthDays) % 7;
+		 String userWeek="";
+		 switch (week) {
+		 case 1:userWeek="星期5";break;
+		 case 2:userWeek="星期6";break;
+		 case 3:userWeek="星期7";break;
+		 case 4:userWeek="星期1";break;
+		 case 5:userWeek="星期2";break;
+		 case 6:userWeek="星期3";break;
+		 case 7:userWeek="星期4";break;
+		}
+		 System.out.println(userWeek);
+	}
+
+}
